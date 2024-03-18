@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>AR.JS Studio LP Jules Verne Etaples</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../pages/marker/marker.css" />
+
+    <!-- import studio-backend api -->
+    <script
+        src="https://raw.githack.com/AR-js-org/studio-backend/master/dist/arjs-studio-backend.min.js"></script>
+
+    <!-- import aframe to support model preview -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.js"></script>
+    <script src="https://cdn.statically.io/gh/donmccurdy/aframe-extras/fe293f78/dist/aframe-extras.loaders.js"></script>
+
+    <!-- import JsZip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.3.0/jszip.min.js"></script>
+
+    <!-- import web components -->
+    <script src="../../components/back-anchor/back-anchor.js"></script>
+    <script src="../../components/file-holder/file-holder.js"></script>
+    <script src="../../components/file-select/file-select.js"></script>
+    <script src="../../components/header/header.js"></script>
+    <script src="../../components/footer/footer.js"></script>
+    <script src="../../components/model-controller/model-controller.js"></script>
+    <script src="../../components/feedback/stickybutton.js"></script>
+
+    <!-- import utils -->
+    <script src="../../utils/fileHelper.js"></script>
+    <script src="../../utils/fileTemplate.js"></script>
+    <script src="../../utils/fileHandler.js"></script>
+    <script src="./marker.js" defer></script>
+
+</head>
+
+<body onload="setDefaultMarker()">
+    <page-header assetsUrl="../../assets"></page-header>
+    <img class="default-marker-hidden" style="position: absolute; top: 0; right: -1000px;" src="../../assets/default-marker-no-border.png"/>
+    <div class="pages-content">
+        <back-anchor assetsUrl="../../assets"></back-anchor>
+        <div class="pages-content-container">
+            <div class="pages-content-element">
+                <p class="title">Réalité augmentée basée sur un marqueur</p>
+                <p class="paragraph">
+                     Création d'une application de réalité augmentée 
+                     au travers d'une page web, il suffira de pointer la camera de votre 
+                     appareil sur le marqueur.
+                </p>
+                <p class="paragraph">
+                    Vous devez imprimer le marqueur pour le fonctionnement.
+                </p>
+            </div>
+        </div>
+
+        <div class="pages-content-container">
+            <div class="pages-content-element">
+                <p class="lead">1. Utiliser le marqueur par défaut ou télécharger le votre</p>
+                <p class="paragraph">
+                    Marqueur par défaut que vous pouvez utiliser.
+                    Ou, cliquer sur “Télécharger votre marqueur”. <a class="link" target="_blank" href="https://github.com/guarim/Studio-ARJS-LPJulesVerne.io/blob/main/what-makes-a-good-marker.md">aide création</a>.
+                </p>
+                <label class="passive-button">
+                    <input id="marker-file" type="file" accept="image/png, image/jpeg" hidden
+                        onchange="handleMarkerUpload(this)" />
+                    Télécharger votre marqueur
+                </label>
+                <p id="marker-error" class="error"></p>
+            </div>
+            <div id="marker-preview" target="marker-file">
+                <div class="marker">
+                    <img src="../../assets/default-marker.png" alt="Default marker png"/>
+                </div>
+                <div class="download-marker" style="display: flex; justify-content: flex-end; padding: 1em 0;">
+                    <div class="download-default-marker">
+                        <span>
+                            <svg width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                <path d="M16.5 8L15.09 6.59L9.5 12.17V0H7.5V12.17L1.92 6.58L0.5 8L8.5 16L16.5 8Z" fill="black"/>
+                            </svg>
+                        </span>
+                        <a class="filename" style="text-decoration: none; color: black; justify-self: flex-end;" href="../../assets/default-marker.png" download>Download marker</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pages-content-container">
+            <div class="pages-content-element">
+                <p class="lead">2. Choisir le contenu </p>
+                <p class="paragraph">
+                    <p>télécharger le fichier de votre scène de réalité augmentée.</p>
+                    <p class="bold">
+                        Vérifier le nom du fichier et supprimer les espaces.
+                    </p>
+                    <ul>
+                        <li>3D Object (.gltf, .glb .zip;  maximum 50MB)</li>
+                        <li>Image (.jpg, .png, .gif; maximum 15MB)</li>
+                        <!-- TODO fix the bug for audio -->
+                        <!-- <li>Audio (.mp3; maximum 10MB)</li> -->
+                        <li>Video (.mp4; maximum 25MB)</li>
+                    </ul>
+                </p>
+                <label class="passive-button file-input">
+                    <input id="content-file" accept="*" type="file" hidden onchange="handleContentUpload(this)" />
+                    Selectionner fichier
+                </label>
+                <p id="content-error" class="error"></p>
+            </div>
+            <div id="content-preview" target="content-file">
+                <file-holder></file-holder>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+    <page-footer></page-footer>
+   
+</body>
+
+</html>

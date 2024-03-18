@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Studio-ARJS-LPJulesVerne</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="./publish.css" />
+
+    <!-- import studio-backend api -->
+    <script src="https://raw.githack.com/guarim/studio-backend/master/dist/arjs-studio-backend.min.js"></script>
+
+    <!-- import web components -->
+    <script src="../../components/back-anchor/back-anchor.js"></script>
+    <script src="../../components/header/header.js"></script>
+    <script src="../../components/footer/footer.js"></script>
+    <script src="../../utils/fileHelper.js"></script>
+    <script src="./publish.js"></script>
+    <script src="../../components/feedback/stickybutton.js"></script>
+
+</head>
+
+<body onload="initPage()">
+    <page-header assetsUrl="../../assets"></page-header>
+
+    <div class="pages-content">
+        <back-anchor assetsUrl="../../assets"></back-anchor>
+
+        <div class="pages-content-container">
+            <div class="pages-content-element">
+                <p class="title">Publier le projet</p>
+                <p class="paragraph margin-bottom-2rem">Avant publication, petit contôle que tout est parfail!.</p>
+                <p class="paragraph margin-bottom-2rem">Ce marqueur est nécéssaire au fonctionnement, 
+                    veillez le télécharger l'inserer dans un document ou l'imprimer
+                </p>
+                <div id="preview-container"></div>
+            </div>
+        </div>
+
+        <div class="pages-content-container">
+            <div class="pages-content-element">
+                <p class="lead">Publier dans un répertoire</p>
+                <p class="paragraph margin-bottom-2rem">c'est bientôt le finish! reste une dernière étape donner un nom à votre projet</p>
+                <p class="paragraph margin-bottom-2rem">Nomer votre projet.</p>
+
+                <div id="input-container">
+                    <label class="small" for="project-name">Nom du projet:</label>
+                    <input
+                        id="project-name"
+                        class="text-input margin-bottom-2rem"
+                        type="text"
+                        name="project-name"
+                        placeholder="your-new-ar-project"
+                    />
+
+                    <!-- to be added post MVP -->
+                    <!-- <label class="small" for="personal-email">Personal email:</label>
+                    <input
+                        id="personal-email"
+                        class="text-input margin-bottom-2rem"
+                        type="text"
+                        name="personal-email"
+                        placeholder="your@email.com"
+                    /> -->
+                    <div style="display: flex; align-items: center;">
+                        <a href="" id="publish-project" class="primary-button">Publish</a>
+                        <p class="paragraph margin-bottom-2rem" style="margin-left: 2em;">Vous devez vous identifier sur GitHub.</p>
+                    </div>
+                </div>
+
+               
+        </div>
+
+</body>
+
+</html>

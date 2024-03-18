@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>LP Jules Verne Etaples--STUDIO-RA: </title>
+    <link rel="shortcut icon" href="./assets/img/logo.png" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./pages/main/main.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="./components/header/header.js"></script>
+    <script src="./pages/main/main.js"></script>
+    <script src="./components/feedback/stickybutton.js"></script>
+  </head>
+
+  <body>
+    <page-header assetsUrl="assets"></page-header>
+    <div class="background">
+      <div class="content">
+        <p class="title">AR-STUDIO, Une Web experience 
+          de réalité augmentée</p>
+        <p class="paragraph">
+            STUDIO DE REALITE AUGMENTEE:
+          
+        </p> 
+        <p class="paragraph">
+            Adapté à l'enseignement par M.Guarim professeur EN.
+            Basé sur le toolkit AR.js (de Gérome Etienne), AR-Studio 
+            est une application open source de création d'application de réalité augmentée 
+            au travers d'une page web.
+          
+         </p> 
+         <p class="paragraph">
+          
+            Créer une application basée sur la géolocalisation,
+            ou sur l'utilisation d'un marqueur afin de superposer des informations à la réalité.
+            Pas besoin de logiciel dédié, ni de connaissance en codage (No code)!
+          </p>
+
+        <img class="splashscreen" src="./assets/img/3d.gif" alt="Demo image home page"/>
+
+        <p class="lead">Sélectionner votre type de projet</p>
+
+        <div>
+          <label class="radio-container paragraph">
+            <span class="radio-title">Réalité Augmentée par géolocalisation</span>
+            <input
+              id="location"
+              type="radio"
+              name="radio"
+              onclick="radioOnclick(this)"
+            />
+            <span>
+                Placer votre création dans un lieu précis, fonctionne avec la géolocalisation.
+            </span>
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="radio-container paragraph">
+            <span class="radio-title">Réalité Augmentée par marqueur</span>
+            <input
+              id="marker"
+              type="radio"
+              name="radio"
+              onclick="radioOnclick(this)"
+            />
+            <span>
+              Creation avec un marqueur visuel, utilisable sur tout support.
+            </span>
+            <span class="checkmark"></span>
+          </label>
+
+          <div class="buttons-container">
+            <a onclick="anchorOnclick(this)" id="start-building" class="primary-button">Démarrer votre projet</a>
+          </div>
+          
+          <div id="error" class="error" style="visibility: hidden;">
+            Oups!  selectionner le type de projet.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
